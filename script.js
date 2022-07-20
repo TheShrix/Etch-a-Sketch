@@ -34,6 +34,7 @@ function clearAll() {
   }
   //newGridSize would go here if wanting to change canvas size after clearing
   createGrid();
+  newGridSize();
 }
 
 clear.addEventListener("click", clearAll);

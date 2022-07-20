@@ -1,24 +1,112 @@
-:root {
-    --grid-cols: 1;
-    --grid-rows: 1;
+html {
+    background-color: rgb(231, 101, 41);
+}
+
+body {
+    text-align: center;
+    align-content: center;
+}
+
+h1 {
+    color: black;
+    text-shadow: 3px 2px 1px white;
+    font-size: 60px;
 }
 
 #container {
-    display: grid;
-    grid-gap: 1em;
-    grid-template-rows: repeat(var(--grid-rows), 1fr);
-    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    margin: auto;
+    display: block;
+    width: 700px;
+    height: 700px;
+    background-color: white;
+    border: black 5px solid;
+    box-shadow: inset 5px 5px 15px black;
+    font-size: 0;
 }
 
-.grid-item {
-    padding: 1em;
-    border: 1px black;
-    text-align: center;
-}
 
-.cell {
-    border: 1px black;
-    min-width: 10px;
-    min-height: 20px;
+#box-style {
     display: inline-block;
+    margin-top: 0px;
+}
+
+
+#clear {
+    margin-top: 20px;
+    width: 75px;
+    height: 50px;
+    color: black;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+#buttons {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    height: 75px;
+    width: auto;
+}
+
+.black {
+    background-color: black;
+}
+
+.blk {
+    width: 120px;
+    height: 75px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    box-shadow: 0 5px whitesmoke;
+}
+
+.rgb {
+    width: 120px;
+    height: 75px;
+    color: black;
+    font-size: 25px;
+    font-weight: 900;
+    border-radius: 10px;
+    background-color: rgb(20, 110, 184);
+    box-shadow: 0 5px black;
+    border: none;
+    outline: none;
+    animation: animationthree 10s infinite;
+}
+
+.blk:hover {background-color: grey;}
+
+.blk:active {
+    background-color: grey;
+    box-shadow: 0 1px white;
+    transform: translateY(4px);
+}
+
+.rgb:hover {animation: animationtwo 10s infinite}
+
+.rgb:active {
+    background-color: grey;
+    box-shadow: 0 1px white;
+    transform: translateY(4px);
+}
+
+@keyframes animationtwo {
+    0% {background-color: blue;}
+    25% {background-color: green;}
+    50% {background-color: orange;}
+    75% {background-color: orangered;}
+    100% {background-color: red;}
+}
+
+@keyframes animationthree {
+    0% {background-color: green;}
+    25% {background-color: blue;}
+    50% {background-color: blueviolet;}
+    75% {background-color: yellow;}
+    100% {background-color: orangered;}
 }

@@ -1,13 +1,51 @@
-const container = document.getElementById("container");
+const container = document.querySelector("#container");
+const boxStyle = document.querySelector("#box-style");
+const clear = document.querySelector("#clear");
 
-function makeRows(rows, cols) {
-    container.style.setProperty('--grid-rows', rows);
-    container.style.setProperty('--grid-cols', cols);
-    for (c = 0; c <= (rows * cols); c++) {
-        let cell = document.createElement("div");
-        cell.innerText = (c + 1);
-        container.appendChild(cell).className = "grid-item";
-    };
-};
+let grid = 16;
 
-makeRows(16, 16);
+createGrid();
+
+// Creates grid with initial 16x16
+
+function createGrid() {
+  let gridSize = `${700 / grid}px`;
+
+  for (i = 1; i <= (grid * grid); i++) {
+    let box = document.createElement('div');
+    box.setAttribute('id', 'box-style');
+    box.style.width = gridSize;
+    box.style.height = gridSize;
+    box.classList.add("trace");
+    box.addEventListener("mouseover", colorBox);
+    container.appendChild(box);
+  }
+}
+
+function colorBox(e) {
+  e.target.classList.add("black");
+}
+
+// Clears grid of all color
+function clearAll() {
+  const trace = document.getElementsByClassName("trace");
+  while (trace[0]) {
+    container.removeChild(trace[0]);
+  }
+  //newGridSize would go here if wanting to change canvas size after clearing
+  createGrid();
+}
+
+clear.addEventListener("click", clearAll);
+
+// Creates new gridsize and prompts user to input new number less than 100
+function newGridSize() {
+  grid = parseInt(prompt("New canvas size", "16"));
+  for (i = 0; i < Infinity; i++) {
+    if (grid > 100) {
+      grid = parseInt(prompt("Please choose smaller number", "100"));
+    } else {
+      return;
+    }
+  }
+}

@@ -71,9 +71,9 @@ function clearAll() {
   while (trace[0]) {
     container.removeChild(trace[0]);
   }
-
-  createGrid();
+  
   newGridSize();
+  createGrid();
 }
 
 //Clears grid when changing colors

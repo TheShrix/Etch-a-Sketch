@@ -1,8 +1,14 @@
 const container = document.querySelector("#container");
 const boxStyle = document.querySelector("#box-style");
 const clear = document.querySelector("#clear");
+const blackButton = document.querySelector(".blk");
+const rgbButton = document.querySelector(".rgb");
+
 
 let grid = 16;
+
+
+
 
 createGrid();
 
@@ -23,8 +29,41 @@ function createGrid() {
 }
 
 function colorBox(e) {
-  e.target.classList.add("black");
+  switch (color) {
+    case 'rgb1': 
+      e.target.classList.add('rgb1');
+      break;
+    case 'black':
+      e.target.classList.add('black');
+      break; 
+    default:
+      e.target.classList.add('black');
+  };
 }
+
+
+
+
+function changeColor(event) {
+  switch (event.target.dataset.color) {
+    case 'rgb1': 
+      color = 'rgb1';
+      clearGrid();
+      break;
+    case 'black':
+      color = 'black';
+      clearGrid();
+      break;
+    default: 
+      color = 'black';
+      break;
+  }
+}
+
+
+
+
+
 
 // Clears grid of all color
 function clearAll() {
@@ -32,12 +71,22 @@ function clearAll() {
   while (trace[0]) {
     container.removeChild(trace[0]);
   }
-  //newGridSize would go here if wanting to change canvas size after clearing
+
   createGrid();
   newGridSize();
 }
 
-clear.addEventListener("click", clearAll);
+//Clears grid when changing colors
+function clearGrid() {
+  const trace = document.getElementsByClassName("trace");
+  while (trace[0]) {
+    container.removeChild(trace[0]);
+  }
+
+  createGrid();
+}
+
+
 
 // Creates new gridsize and prompts user to input new number less than 100
 function newGridSize() {
@@ -50,3 +99,15 @@ function newGridSize() {
     }
   }
 }
+
+
+
+
+
+
+
+
+//Event Listeners
+clear.addEventListener("click", clearAll);
+blackButton.addEventListener('click', changeColor);
+rgbButton.addEventListener('click', changeColor);
